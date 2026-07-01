@@ -17,12 +17,11 @@ const doorOverlay = document.getElementById('door-overlay');
 
 function openDoors() {
   doorOverlay.classList.add('open');
-// Reveal the hero photo via CSS class immediately — works even if GSAP fails
-  document.getElementById('hero-photo-wrap')?.classList.add('revealed');
+
   // After the door swing animation finishes, hide the overlay
   setTimeout(() => {
     doorOverlay.classList.add('hidden');
-    try { startHeroAnimation(); } catch (e) { console.warn('GSAP unavailable, using CSS fallback', e); }
+    try { startHeroAnimation(); } catch (e) { console.warn('GSAP unavailable', e); }
     startPetals();          // Rose petals begin falling
     startMusic();           // Background music begins
     if (window.AOS) AOS.init({
@@ -106,14 +105,8 @@ function startHeroAnimation() {
   ], { y: 28 });
 
   gsap.timeline({ delay: 0.1 })
-    // Photo wipes in from left edge via clip-path
-    .to('.hero-photo-wrap', {
-        clipPath: 'inset(0 0% 0 0)',
-        duration: 1.4,
-        ease: 'power3.inOut'
-      }, 0)
-    // Text panel slides in from right, overlapping
-    .to('.hero-content', { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, 0.6)
+    // Text panel slides in from right (photo is already visible — no wipe)
+    .to('.hero-content', { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, 0)
     .to('.hero-ornament', { opacity: 0.8, y: 0, duration: 1,   ease: 'power3.out' }, 0.75)
     .to('.hero-subtitle', { opacity: 1,   y: 0, duration: 1,   ease: 'power3.out' }, '-=0.75')
     .to('.hero-names',    { opacity: 1,   y: 0, duration: 1,   ease: 'power3.out' }, '-=0.75')
