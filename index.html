@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harapriya &amp; Arijeet — July 8, 2026</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) styles -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Our stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Background music — starts after door opens (user click satisfies autoplay policy) -->
+<audio id="bg-music" loop preload="auto">
+  <source src="music/background.mp3"  type="audio/mpeg">
+  <source src="music/background.ogg"  type="audio/ogg">
+</audio>
+
+<!-- Floating music toggle button -->
+<button class="music-toggle" id="music-toggle" aria-label="Toggle music" title="Toggle music">
+  <span class="music-icon" id="music-icon">♪</span>
+</button>
+
+<!-- ============================================================
+     DOOR OVERLAY — shown on first load, hides after user opens it
+============================================================ -->
+<div id="door-overlay">
+
+  <!-- LEFT DOOR PANEL -->
+  <div class="door-panel door-left">
+    <div class="door-inner-border"></div>
+    <div class="door-content">
+      <div class="door-top-ornament">❦ &nbsp; ✦ &nbsp; ❦</div>
+      <div class="door-rule"></div>
+      <div class="door-main-text">YOU'RE</div>
+      <div class="door-rule"></div>
+      <div class="door-bottom-ornament">◆ &nbsp; ◆ &nbsp; ◆</div>
+    </div>
+    <!-- Sun handle — LEFT half (right half is clipped by overflow:hidden, reveals when door opens) -->
+    <div class="door-knob">
+      <svg class="sun-knob" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="sgL" cx="40%" cy="35%">
+            <stop offset="0%"   stop-color="#F5E0A0"/>
+            <stop offset="60%"  stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#7A5A10"/>
+          </radialGradient>
+        </defs>
+        <!-- 8 flame rays (cubic bezier teardrop, rotated) -->
+        <g fill="#C9A84C" opacity="0.9">
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(0   30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(45  30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(90  30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(135 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(180 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(225 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(270 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(315 30 30)"/>
+        </g>
+        <!-- Centre disc -->
+        <circle cx="30" cy="30" r="9.5" fill="url(#sgL)"/>
+        <!-- Inner ring detail -->
+        <circle cx="30" cy="30" r="5.5" fill="none" stroke="rgba(74,19,32,0.4)" stroke-width="1.2"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- RIGHT DOOR PANEL -->
+  <div class="door-panel door-right">
+    <div class="door-inner-border"></div>
+    <div class="door-content">
+      <div class="door-top-ornament">❦ &nbsp; ✦ &nbsp; ❦</div>
+      <div class="door-rule"></div>
+      <div class="door-main-text">INVITED</div>
+      <div class="door-rule"></div>
+      <div class="door-bottom-ornament">◆ &nbsp; ◆ &nbsp; ◆</div>
+    </div>
+    <!-- Sun handle — RIGHT half -->
+    <div class="door-knob">
+      <svg class="sun-knob" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="sgR" cx="40%" cy="35%">
+            <stop offset="0%"   stop-color="#F5E0A0"/>
+            <stop offset="60%"  stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#7A5A10"/>
+          </radialGradient>
+        </defs>
+        <g fill="#C9A84C" opacity="0.9">
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(0   30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(45  30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(90  30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(135 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(180 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(225 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(270 30 30)"/>
+          <path d="M30 21 C25 17 24 11 30 4 C36 11 35 17 30 21Z" transform="rotate(315 30 30)"/>
+        </g>
+        <circle cx="30" cy="30" r="9.5" fill="url(#sgR)"/>
+        <circle cx="30" cy="30" r="5.5" fill="none" stroke="rgba(74,19,32,0.4)" stroke-width="1.2"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Pulsing hint at the bottom -->
+  <div class="door-hint">✦ &nbsp; Click or Touch to Open &nbsp; ✦</div>
+
+</div>
+
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav>
+  <a href="#story">Our Story</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#travel">Travel</a>
+</nav>
+
+
+<!-- ============================================================
+     HERO — Names, ornament, petals background
+     (date & venue are hidden in the scratch card below)
+============================================================ -->
+<section class="hero" id="top">
+
+  <!-- Rose petals are spawned inside this div by main.js -->
+  <div id="petals-container"></div>
+
+  <!-- Cover photo — left 60% (add your photo to photos/hero/cover.jpg) -->
+  <div class="hero-photo-wrap" id="hero-photo-wrap">
+    <img class="hero-photo" src="photos/hero/cover.jpg" alt="Harapriya &amp; Arijeet" id="hero-photo"/>
+    <div class="hero-photo-placeholder" id="hero-placeholder">
+      <div class="placeholder-ornament">✦</div>
+      <div class="placeholder-names">Harapriya<br/>&amp;<br/>Arijeet</div>
+      <div class="placeholder-hint">Add your photo to<br/>photos/hero/cover.jpg</div>
+    </div>
+    <div class="hero-sparkles" id="hero-sparkles"></div>
+  </div>
+
+  <!-- Hero text — right side -->
+  <div class="hero-content">
+    <div class="hero-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <div class="hero-subtitle">Together Forever</div>
+
+    <div class="hero-names">
+      <span class="name-gold">Harapriya</span>
+      <span class="hero-ampersand">&amp;</span>
+      Arijeet
+    </div>
+
+    <div class="hero-divider"></div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     SCRATCH SECTION — Scratch the gold foil to reveal date & venue
+============================================================ -->
+<div class="scratch-section">
+
+  <div class="scratch-label">✦ &nbsp; Scratch to Reveal &nbsp; ✦</div>
+
+  <div class="scratch-card" id="scratch-card">
+    <!-- The date & venue hidden underneath the gold foil canvas -->
+    <div class="scratch-hidden-text">
+      <div class="scratch-hidden-date">JULY 8, 2026</div>
+      <div class="scratch-hidden-venue">Maniabandha, Cuttack</div>
+    </div>
+    <!-- Canvas is drawn over the text by main.js (gold foil layer) -->
+    <canvas id="scratch-canvas"></canvas>
+  </div>
+
+  <!-- Fallback button — appears after 5 seconds in case user can't scratch -->
+  <button class="scratch-skip" id="scratch-skip" onclick="revealDate()">
+    Tap here to reveal instead
+  </button>
+
+</div>
+
+
+<!-- ============================================================
+     COUNTDOWN — hidden until the date is scratched & revealed
+============================================================ -->
+<div class="countdown-bar" id="countdown-section" style="display:none">
+  <div class="countdown-label">✦ &nbsp; Counting Down to Forever &nbsp; ✦</div>
+  <div class="countdown-grid">
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-days">--</div>
+      <div class="countdown-unit">Days</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-hours">--</div>
+      <div class="countdown-unit">Hours</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-mins">--</div>
+      <div class="countdown-unit">Minutes</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-secs">--</div>
+      <div class="countdown-unit">Seconds</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     OUR STORY
+============================================================ -->
+<div class="section-wrap" id="story">
+  <div class="section-inner">
+
+    <div class="section-label"  data-aos="fade-up">✦ How it began ✦</div>
+    <h2 class="section-title"  data-aos="fade-up" data-aos-delay="100">Our Story</h2>
+    <div class="section-ornament" data-aos="fade-up" data-aos-delay="200">◆ ◆ ◆</div>
+
+    <div class="story-grid">
+
+      <!-- Add photos/story/couple.jpg to show your photo here -->
+      <div class="story-image" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">
+        <img src="photos/story/couple.jpg" alt="Harapriya & Arijeet">
+        <div class="story-placeholder">
+          <div class="story-image-heart">♥</div>
+          <div class="story-image-label">Add couple.jpg to<br>photos/story/</div>
+        </div>
+      </div>
+
+      <div class="story-text" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
+        <p class="drop-cap">Theirs is a love story that began the way many beautiful ones do — through family. What started as an arranged introduction soon grew into something neither could have planned: a genuine, deep, and joyful love.</p>
+        <p>As they got to know each other — through conversations, shared laughter, and quiet moments — they discovered how perfectly they fit. What families had hoped for, their hearts confirmed.</p>
+        <p>Today, Harapriya and Arijeet stand together not just because family brought them together, but because they chose each other. A love that was arranged, and then became everything.</p>
+        <div class="story-quote">"Some bonds are written by fate, and made perfect by love."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     EVENT SCHEDULE
+============================================================ -->
+<div class="schedule-wrap" id="schedule">
+  <div class="schedule-inner">
+
+    <div class="section-label"  data-aos="fade-up">✦ The celebrations ✦</div>
+    <h2 class="section-title"  data-aos="fade-up" data-aos-delay="100">Event Schedule</h2>
+    <div class="section-ornament" data-aos="fade-up" data-aos-delay="200">◆ ◆ ◆</div>
+
+    <div class="timeline">
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="timeline-dot filled"></div>
+        <div class="timeline-date">July 7, 2026</div>
+        <div class="timeline-event">Haldi &amp; Mehndi</div>
+        <div class="timeline-venue">Sahoo Niwas, Kamakhyanagar, Dhenkanal</div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="timeline-dot filled"></div>
+        <div class="timeline-date">July 8, 2026</div>
+        <div class="timeline-event">Baraat Procession</div>
+        <div class="timeline-venue">Maniabandha, Cuttack</div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="timeline-dot filled"></div>
+        <div class="timeline-date">July 8, 2026</div>
+        <div class="timeline-event">Wedding Ceremony</div>
+        <div class="timeline-venue">Maniabandha, Cuttack</div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">July 10, 2026</div>
+        <div class="timeline-event">Reception</div>
+        <div class="timeline-venue">Mundideuli, Kamakhyanagar, Dhenkanal</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PHOTO GALLERY
+     HOW TO ADD PHOTOS:
+       Drop your photos into photos/gallery/ with these names:
+         photo-1.jpg  (tall left column  — portrait works best)
+         photo-2.jpg  (top middle)
+         photo-3.jpg  (top right)
+         photo-4.jpg  (bottom middle)
+         photo-5.jpg  (wide bottom row  — landscape works best)
+============================================================ -->
+<div class="section-wrap" id="gallery">
+  <div class="section-inner" style="max-width: 1000px;">
+
+    <div class="section-label"  data-aos="fade-up">✦ Memories ✦</div>
+    <h2 class="section-title"  data-aos="fade-up" data-aos-delay="100">Photo Gallery</h2>
+    <div class="section-ornament" data-aos="fade-up" data-aos-delay="200">◆ ◆ ◆</div>
+
+    <div class="gallery-grid" data-aos="fade-up" data-aos-delay="300">
+
+      <div class="gallery-item tall">
+        <img src="photos/gallery/photo-1.jpg" alt="Harapriya & Arijeet">
+        photo-1.jpg
+      </div>
+      <div class="gallery-item">
+        <img src="photos/gallery/photo-2.jpg" alt="Harapriya & Arijeet">
+        photo-2.jpg
+      </div>
+      <div class="gallery-item">
+        <img src="photos/gallery/photo-3.jpg" alt="Harapriya & Arijeet">
+        photo-3.jpg
+      </div>
+      <div class="gallery-item">
+        <img src="photos/gallery/photo-4.jpg" alt="Harapriya & Arijeet">
+        photo-4.jpg
+      </div>
+      <div class="gallery-item wide">
+        <img src="photos/gallery/photo-5.jpg" alt="Harapriya & Arijeet">
+        photo-5.jpg
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     TRAVEL — Two Google Maps (Wedding + Reception)
+     NOTE: To update the map links, go to maps.google.com →
+           search your location → Share → Embed a map →
+           copy only the src="..." URL and paste it below.
+============================================================ -->
+<div class="travel-wrap" id="travel">
+  <div class="section-inner">
+
+    <div class="section-label"  data-aos="fade-up">✦ Getting here ✦</div>
+    <h2 class="section-title"  data-aos="fade-up" data-aos-delay="100">Travel</h2>
+    <div class="section-ornament" data-aos="fade-up" data-aos-delay="200">◆ ◆ ◆</div>
+
+    <div class="map-grid" data-aos="fade-up" data-aos-delay="300">
+
+      <div class="map-block">
+        <div class="map-block-title">Wedding Venue</div>
+        <div class="map-block-subtitle">Maniabandha, Cuttack, Odisha</div>
+        <iframe
+          src="https://maps.google.com/maps?q=Maniabandha,Cuttack,Odisha,India&t=m&z=14&output=embed"
+          title="Wedding Venue — Maniabandha, Cuttack"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="map-block">
+        <div class="map-block-title">Reception</div>
+        <div class="map-block-subtitle">Mundideuli, Kamakhyanagar, Dhenkanal, Odisha</div>
+        <iframe
+          src="https://maps.google.com/maps?q=Mundideuli,Kamakhyanagar,Dhenkanal,Odisha,India&t=m&z=14&output=embed"
+          title="Reception — Mundideuli, Kamakhyanagar"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="footer-names">Harapriya &amp; Arijeet</div>
+  <div class="footer-date">JULY 8, 2026 &nbsp;✦&nbsp; MANIABANDHA, CUTTACK</div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS — load libraries first, then our main.js last
+============================================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+GALLERY PHOTOS — How to add your photos
+========================================
+
+Drop your wedding photos into this folder (photos/gallery/) with these exact names:
+
+  photo-1.jpg   → Tall left column  (portrait/vertical photo works best)
+  photo-2.jpg   → Top middle
+  photo-3.jpg   → Top right
+  photo-4.jpg   → Bottom middle
+  photo-5.jpg   → Wide bottom row   (landscape/horizontal photo works best)
+
+Tips:
+  - JPG or WebP format recommended
+  - At least 800px wide for good quality
+  - The website will automatically show them once the files are added
+  - You can delete this instructions.txt file once you've added your photos

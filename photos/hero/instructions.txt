@@ -1,0 +1,22 @@
+HERO COVER PHOTO — How to add your photo
+=========================================
+
+Drop ONE photo into this folder (photos/hero/) with this exact name:
+
+  cover.jpg    → Shows as the large cover photo on the LEFT side of the main page
+
+Tips:
+  - Portrait or landscape both work — the photo fills the full left panel
+  - JPG or WebP format recommended
+  - At least 1200px tall for good quality on retina screens
+  - "object-position: center top" is set by default, so the top of the photo
+    is always shown — great for couple portraits where faces are at the top
+  - To change the focal point, edit css/style.css and update:
+      .hero-photo { object-position: center top; }
+    e.g. use "center center" to focus the middle of the photo
+
+What happens when you add the photo:
+  - The photo wipes in from the left edge (cinematic reveal animation)
+  - Gold sparkles scatter across the photo for ~4 seconds then disappear
+  - Your names slide in from the right side simultaneously
+  - You can delete this instructions.txt file once you've added your photo

@@ -1,0 +1,31 @@
+BACKGROUND MUSIC — How to add your music
+=========================================
+
+Drop your music file into this folder (music/) with this exact name:
+
+  background.mp3   ← required (works in all browsers)
+  background.ogg   ← optional fallback for older browsers
+
+WHEN IT PLAYS
+  - Music starts automatically after the door opens (gentle fade-in)
+  - Volume is set to 30% so it stays soft and doesn't overpower
+  - It loops continuously
+  - Guests can mute/unmute using the ♪ button in the bottom-right corner
+
+RECOMMENDED MUSIC STYLE
+  - Soft shehnai / bansuri / sitar instrumental
+  - Classical Indian wedding background music
+  - Soft piano or strings
+  - Avoid anything with lyrics — it distracts from reading
+
+FILE SIZE
+  - Keep under 5 MB for fast loading on mobile
+  - Use a 128 kbps MP3 — perfectly fine quality for background music
+
+WHERE TO FIND ROYALTY-FREE MUSIC
+  - pixabay.com/music       (search "Indian wedding" or "shehnai")
+  - freesound.org
+  - mixkit.co/free-music
+  - bensound.com
+
+You can delete this instructions.txt once you've added your music file.

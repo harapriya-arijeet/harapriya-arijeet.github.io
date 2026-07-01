@@ -1,0 +1,12 @@
+STORY PHOTO — How to add your couple photo
+==========================================
+
+Drop ONE photo into this folder (photos/story/) with this exact name:
+
+  couple.jpg    → Shows in the "Our Story" section on the left side
+
+Tips:
+  - Portrait/vertical orientation looks best (taller than wide)
+  - JPG or WebP format recommended
+  - At least 600px wide for good quality
+  - You can delete this instructions.txt file once you've added your photo
