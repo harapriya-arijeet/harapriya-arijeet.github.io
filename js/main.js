@@ -17,14 +17,15 @@ const doorOverlay = document.getElementById('door-overlay');
 
 function openDoors() {
   doorOverlay.classList.add('open');
-
+// Reveal the hero photo via CSS class immediately — works even if GSAP fails
+  document.getElementById('hero-photo-wrap')?.classList.add('revealed');
   // After the door swing animation finishes, hide the overlay
   setTimeout(() => {
     doorOverlay.classList.add('hidden');
-    startHeroAnimation();   // GSAP entrance
+    try { startHeroAnimation(); } catch (e) { console.warn('GSAP unavailable, using CSS fallback', e); }
     startPetals();          // Rose petals begin falling
     startMusic();           // Background music begins
-    AOS.init({              // Scroll animations are live now
+    if (window.AOS) AOS.init({
       duration: 800,
       easing:   'ease-out-cubic',
       once:     true,
