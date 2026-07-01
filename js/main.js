@@ -85,15 +85,20 @@ function startPetals() {
 /* ── 3. GSAP — Hero entrance timeline ──────────────────────── */
 // Called only after the door finishes opening
 
-// Mark wrap when real photo loads; hide img on error so placeholder shows
+// Mark wrap when real photo loads; hide img on error so placeholder shows.
+// Because we preload cover.jpg, the load event often fires BEFORE this script
+// runs — so we check img.complete synchronously as well as attaching listeners.
 const heroPhotoEl = document.getElementById('hero-photo');
 if (heroPhotoEl) {
-  heroPhotoEl.addEventListener('load',  () => {
-    document.getElementById('hero-photo-wrap').classList.add('photo-loaded');
-  });
-  heroPhotoEl.addEventListener('error', () => {
-    heroPhotoEl.style.display = 'none';
-  });
+  const markLoaded = () => document.getElementById('hero-photo-wrap').classList.add('photo-loaded');
+  const markError  = () => { heroPhotoEl.style.display = 'none'; };
+
+  if (heroPhotoEl.complete) {
+    heroPhotoEl.naturalHeight > 0 ? markLoaded() : markError();
+  } else {
+    heroPhotoEl.addEventListener('load',  markLoaded);
+    heroPhotoEl.addEventListener('error', markError);
+  }
 }
 
 function startHeroAnimation() {
